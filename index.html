@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the number!</title>
+    <link rel="stylesheet" href="GuessTheNumber.css">
+</head>
+<body>
+    <header>
+        <h1> 
+            Welcome to Guess The Number game!
+        </h1>
+    </header>
+    <div class = "Rules">
+        <h2 class = "h2Text"> RULES </h2>
+        <ol>
+            <li> The computer will choose a number under 100.</li>
+            <li> User has to guess the number, enter it in the text-box and click on the submit button.</li>
+            <li> User gets 10 chances to guess the correct number.</li>
+            <li> If the number guessed by user is correct, user wins! </li>
+            <li> Otherwise user loses the game.</li>
+        </ol>
+    </div>
+
+    <div class = "middleContent">
+        <input type="text" id = "textIP" name="InputPlaceholder" placeholder="Type the guessed number">
+        <br><br>
+        <input type="button" id = "submitNumber" name = "SubmitButton" value="Submit" onclick="check()">
+        <p id = "Result"></p>
+        <input type = "button" id = "reloadPage" onclick="reloadPage()" value="Play again" disabled> 
+    </div>
+
+    <div class = "rightMost">
+        <p> <h2 class = "h2Text"> Attempts done: </h2> </p>
+        <h3 id = "attempts"></h3>
+        <br>
+        <!-- <p> Random generated number : </p>
+        <p id = "generatednumber"></p> -->
+    </div>
+
+    <script>
+
+        var randomNumber = Math.floor((Math.random() * 100) + 1);
+        console.log(randomNumber);
+        // var refGNumber = document.getElementById("generatednumber");
+        // //console.log(refGNumber);
+        // refGNumber.innerText = randomNumber;
+        var attemptNo = 1;
+
+        
+        var refTextIP = document.getElementById("textIP");
+        var refResult = document.getElementById("Result");
+        var refSubmitButton = document.getElementById("submitNumber");
+        var refReloadButton = document.getElementById("reloadPage");
+
+        function check()
+        {
+            document.getElementById("attempts").innerText = attemptNo;
+            if(attemptNo <= 10){
+                console.log("Guessed number: "+ refTextIP.value + " Random Number: "+ randomNumber);
+
+                if(refTextIP.value == randomNumber){
+                    refResult.innerText = "You won! 💃🕺";
+                    refSubmitButton.disabled = 'true';
+                    refReloadButton.disabled = null;
+
+                }
+
+                else{
+                    if(refTextIP.value < randomNumber){
+                        refResult.innerText = "Guess again! Enter higher number... ";
+                    }
+                    else{
+                        refResult.innerText = "Guess again! Enter lower number... ";
+                    }
+                    attemptNo++;
+                }
+            }else{
+               
+                refResult.innerText = "You Lost! 😕";
+                refSubmitButton.disabled = 'true';
+                refReloadButton.disabled = null;
+        }
+        }
+
+        function reloadPage(){
+            location.reload();
+            return false;
+        }
+
+    </script>
+</body>
+</html>
