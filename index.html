@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Guess the number!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
     <link rel="stylesheet" href="GuessTheNumber.css">
     <link link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
@@ -28,9 +30,12 @@
     <div class = "middleContent">
         <input type="text" id = "textIP" name="InputPlaceholder" placeholder="Type the guessed number">
         <br><br>
-        <input type="button" id = "submitNumber" name = "SubmitButton" value="Submit" onclick="check()">
+        <!-- <input type="button" id = "submitNumber" name = "SubmitButton" value="Submit" onclick="check()"> -->
+       
+        <button type="button" id = "submitNumber" name = "SubmitButton" value="Submit" class="btn btn-dark" onclick="check()">Submit</button>
         <p id = "Result"></p>
-        <input type = "button" id = "reloadPage" onclick="reloadPage()" value="Play again" disabled> 
+        <!-- <input type = "button" id = "reloadPage" onclick="reloadPage()" value="Play again" disabled> -->
+        <button type="button" id = "reloadPage" onclick="reloadPage()" class="btn btn-primary" disabled>Play again</button>
     </div>
 
     <div class = "rightMost">
@@ -41,6 +46,8 @@
         <p id = "generatednumber"></p> -->
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    
     <script>
 
         var randomNumber = Math.floor((Math.random() * 100) + 1);
